@@ -3,8 +3,15 @@
 using namespace Napi;
 
 bool ArgumentsValidator(const CallbackInfo& info) {
-    if (info.Length() != 1) return false;
-    if (!info[0].IsNumber()) return false;
+    Env env = info.Env();
+    if (info.Length() != 1) {
+        TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
+        return false;
+    }
+    if (!info[0].IsNumber()) {
+        TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
+        return false;
+    };
     return true;
 }
 
@@ -15,11 +22,7 @@ int FibonacciRecursiveLogic(int n) {
 
 Value FibonacciRecursive(const CallbackInfo& info) {
     Env env = info.Env();
-
-    if (!ArgumentsValidator(info)) {
-        TypeError::New(env, "Wrong arguments").ThrowAsJavaScriptException();
-        return env.Null();
-    }
+    if (!ArgumentsValidator(info)) return env.Null();
 
     int result = FibonacciRecursiveLogic(info[0].As<Number>().Int32Value());
     return Number::New(env, result);

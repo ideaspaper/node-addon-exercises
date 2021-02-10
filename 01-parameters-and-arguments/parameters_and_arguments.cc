@@ -3,18 +3,21 @@
 using namespace Napi;
 
 bool ArgumentsValidator(const CallbackInfo& info) {
-    if (info.Length() != 2) return false;
-    if (!info[0].IsNumber() || !info[1].IsNumber()) return false;
+    Env env = info.Env();
+    if (info.Length() != 2) {
+        TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
+        return false;
+    };
+    if (!info[0].IsNumber() || !info[1].IsNumber()) {
+        TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
+        return false;
+    }
     return true;
 }
 
 Value Add(const CallbackInfo& info) {
     Env env = info.Env();
-
-    if (!ArgumentsValidator(info)) {
-        TypeError::New(env, "Wrong arguments").ThrowAsJavaScriptException();
-        return env.Null();
-    }
+    if (!ArgumentsValidator(info)) return env.Null();
 
     double val1 = info[0].As<Number>().DoubleValue();
     double val2 = info[1].As<Number>().DoubleValue();
@@ -23,11 +26,7 @@ Value Add(const CallbackInfo& info) {
 
 Value Sub(const CallbackInfo& info) {
     Env env = info.Env();
-
-    if (!ArgumentsValidator(info)) {
-        TypeError::New(env, "Wrong arguments").ThrowAsJavaScriptException();
-        return env.Null();
-    }
+    if (!ArgumentsValidator(info)) return env.Null();
 
     double val1 = info[0].As<Number>().DoubleValue();
     double val2 = info[1].As<Number>().DoubleValue();
@@ -36,11 +35,7 @@ Value Sub(const CallbackInfo& info) {
 
 Value Mul(const CallbackInfo& info) {
     Env env = info.Env();
-
-    if (!ArgumentsValidator(info)) {
-        TypeError::New(env, "Wrong arguments").ThrowAsJavaScriptException();
-        return env.Null();
-    }
+    if (!ArgumentsValidator(info)) return env.Null();
 
     double val1 = info[0].As<Number>().DoubleValue();
     double val2 = info[1].As<Number>().DoubleValue();
@@ -49,11 +44,7 @@ Value Mul(const CallbackInfo& info) {
 
 Value Div(const CallbackInfo& info) {
     Env env = info.Env();
-
-    if (!ArgumentsValidator(info)) {
-        TypeError::New(env, "Wrong arguments").ThrowAsJavaScriptException();
-        return env.Null();
-    }
+    if (!ArgumentsValidator(info)) return env.Null();
 
     double val1 = info[0].As<Number>().DoubleValue();
     double val2 = info[1].As<Number>().DoubleValue();
