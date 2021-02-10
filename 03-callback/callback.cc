@@ -7,15 +7,15 @@ using namespace Napi;
 bool ArgumentsValidator(const CallbackInfo& info) {
     Env env = info.Env();
     if (info.Length() != 2) {
-        TypeError::New(env, "Wrong arguments").ThrowAsJavaScriptException();
+        TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
         return false;
     }
     if (!info[0].IsNumber() || !info[1].IsFunction()) {
-        TypeError::New(env, "Wrong arguments").ThrowAsJavaScriptException();
+        TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
         return false;
     }
     if (info[0].As<Number>().Int32Value() < 0 || info[0].As<Number>().Int32Value() > 5) {
-        RangeError::New(env, "Argument out of range").ThrowAsJavaScriptException();
+        RangeError::New(env, "Argument(s) out of range").ThrowAsJavaScriptException();
         return false;
     }
     return true;
@@ -23,9 +23,7 @@ bool ArgumentsValidator(const CallbackInfo& info) {
 
 Value Callback(const CallbackInfo& info) {
     Env env = info.Env();
-    if (!ArgumentsValidator(info)) {
-        return env.Null();
-    }
+    if (!ArgumentsValidator(info)) return env.Null();
 
     Function callback = info[1].As<Function>();
 
