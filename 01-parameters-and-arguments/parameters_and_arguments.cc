@@ -3,7 +3,7 @@
 using namespace Napi;
 
 bool ArgumentsValidator(const CallbackInfo& info) {
-    if (info.Length() < 2) return false;
+    if (info.Length() != 2) return false;
     if (!info[0].IsNumber() || !info[1].IsNumber()) return false;
     return true;
 }
