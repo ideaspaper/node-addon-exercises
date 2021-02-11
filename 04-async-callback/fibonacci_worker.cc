@@ -8,16 +8,21 @@ int FibonacciRecursiveLogic(int n) {
     return FibonacciRecursiveLogic(n - 1) + FibonacciRecursiveLogic(n - 2);
 }
 
+// 1. Inherit from AsyncWorker
 class FibonacciWorker : public AsyncWorker {
 public:
+    // 2. Initialization Lists to call AsyncWorker constructor (with arguments) and set object properties
     FibonacciWorker(int n, Function &callback)
         : AsyncWorker(callback), n(n) {}
+    // 3. Destructor
     ~FibonacciWorker() {}
 
+    // 4. Override Execute method of AsyncWorker
     void Execute() {
         result = FibonacciRecursiveLogic(n);
     }
 
+    // 5. Override OnOK method of AsyncWorker
     void OnOK() {
         Callback().Call({Env().Null(), Number::New(Env(), result)});
     }
