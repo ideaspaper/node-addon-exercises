@@ -2,7 +2,9 @@
 #include "fibonacci_worker.h"
 #include "fibonacci_helper.h"
 
-FibonacciWorker::FibonacciWorker(int n, Function &callback)
+// Since AsyncWorker has no default constructor, decide which constructor to be called with initialization list
+// Use initialization list to set FibonacciWorker properties as well
+FibonacciWorker::FibonacciWorker(int n, Napi::Function &callback)
     : AsyncWorker(callback), n(n) {}
 
 FibonacciWorker::~FibonacciWorker() {}
@@ -12,5 +14,5 @@ void FibonacciWorker::Execute() {
 }
 
 void FibonacciWorker::OnOK() {
-    Callback().Call({Env().Null(), Number::New(Env(), result)});
+    Callback().Call({Env().Null(), Napi::Number::New(Env(), result)});
 }

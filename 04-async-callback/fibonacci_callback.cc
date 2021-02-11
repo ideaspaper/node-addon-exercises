@@ -2,14 +2,12 @@
 #include "fibonacci_worker.h"
 #include "fibonacci_helper.h"
 
-using namespace Napi;
-
-Value Calculate(const CallbackInfo& info) {
-    Env env = info.Env();
+Napi::Value Calculate(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
     if (!ArgumentsValidator(info)) return env.Null();
 
-    int n = info[0].As<Number>().Int32Value();
-    Function callback = info[1].As<Function>();
+    int n = info[0].As<Napi::Number>().Int32Value();
+    Napi::Function callback = info[1].As<Napi::Function>();
     FibonacciWorker* fibonacciWorker = new FibonacciWorker(n, callback);
     fibonacciWorker->Queue();
     return env.Null();
