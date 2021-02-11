@@ -1,15 +1,13 @@
 #include <napi.h>
 
-using namespace Napi;
-
-bool ArgumentsValidator(const CallbackInfo& info) {
-    Env env = info.Env();
+bool ArgumentsValidator(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
     if (info.Length() != 1) {
-        TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
+        Napi::TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
         return false;
     }
     if (!info[0].IsNumber()) {
-        TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
+        Napi::TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
         return false;
     };
     return true;
@@ -20,16 +18,16 @@ int FibonacciRecursiveLogic(int n) {
     return FibonacciRecursiveLogic(n - 1) + FibonacciRecursiveLogic(n - 2);
 }
 
-Value FibonacciRecursive(const CallbackInfo& info) {
-    Env env = info.Env();
+Napi::Value FibonacciRecursive(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
     if (!ArgumentsValidator(info)) return env.Null();
 
-    int result = FibonacciRecursiveLogic(info[0].As<Number>().Int32Value());
-    return Number::New(env, result);
+    int result = FibonacciRecursiveLogic(info[0].As<Napi::Number>().Int32Value());
+    return Napi::Number::New(env, result);
 }
 
-Object Init(Env env, Object exports) {
-    exports.Set(String::New(env, "FibonacciRecursive"), Function::New(env, FibonacciRecursive));
+Napi::Object Init(Napi::Env env, Napi::Object exports) {
+    exports.Set(Napi::String::New(env, "FibonacciRecursive"), Napi::Function::New(env, FibonacciRecursive));
     return exports;
 }
 
