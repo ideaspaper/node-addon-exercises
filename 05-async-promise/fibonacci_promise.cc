@@ -7,7 +7,6 @@ Napi::Value Calculate(const Napi::CallbackInfo& info) {
     if (!ArgumentsValidator(info)) return env.Null();
 
     int n = info[0].As<Napi::Number>().Int32Value();
-    Napi::Function callback = info[1].As<Napi::Function>();
     FibonacciWorker* fibonacciWorker = new FibonacciWorker(n, env);
     fibonacciWorker->Queue();
     return fibonacciWorker->deferred.Promise();
