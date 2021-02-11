@@ -1,7 +1,7 @@
-const Callback = require('bindings')('callback');
+const callback = require('bindings')('callback');
 
 try {
-  Callback.Callback(3, (data) => {
+  callback.Callback(3, (data) => {
     console.log(data);
   });
 } catch(err) {

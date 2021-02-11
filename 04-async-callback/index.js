@@ -1,6 +1,6 @@
-const FibonacciCallback = require('bindings')('fibonacci_callback');
+const fibonacci_callback = require('bindings')('fibonacci_callback');
 
-FibonacciCallback.Calculate(45, (err, data) => {
+fibonacci_callback.Calculate(45, (err, data) => {
   if (err) {
     console.log(err);
   } else {
