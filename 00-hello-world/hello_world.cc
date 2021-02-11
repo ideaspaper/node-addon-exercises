@@ -1,23 +1,21 @@
 #include <napi.h>
 
-using namespace Napi;
-
-String Hello(const CallbackInfo& info) {
-    Env env = info.Env();
-    return String::New(env, "Hello");
+Napi::String Hello(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    return Napi::String::New(env, "Hello");
 }
 
-String World(const CallbackInfo& info) {
-    Env env = info.Env();
-    return String::New(env, "World");
+Napi::String World(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    return Napi::String::New(env, "World");
 }
 
 // Bagian ini adalah bagian export seperti module.exports pada JavaScript.
-Object Init(Env env, Object exports) {
+Napi::Object Init(Napi::Env env, Napi::Object exports) {
     // Bagian set key-value dari module yang akan di-export.
     // Pada bagian ini yang kita export adalah function.
-    exports.Set(String::New(env, "Hello"), Function::New(env, Hello));
-    exports.Set(String::New(env, "World"), Function::New(env, World));
+    exports.Set(Napi::String::New(env, "Hello"), Napi::Function::New(env, Hello));
+    exports.Set(Napi::String::New(env, "World"), Napi::Function::New(env, World));
     return exports;
 }
 // Registrasi addon menggunakan INIT function.
