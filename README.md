@@ -21,4 +21,4 @@ Waktu tersebut tentu berbeda apabila percobaan dilakukan pada komputer lain deng
 
 ## How to Use
 
-Masuk ke salah satu folder examples yang ada. Eksekusi command `npm i`. Apabila terdapat perubahan pada file `cc`, jalankan `npx node-gyp build` untuk proses compile executable binary.
+Masuk ke salah satu folder examples yang ada. Eksekusi command `npm i`. Apabila terdapat perubahan pada file `cc`, jalankan `npm i` kembali untuk proses compile executable binary.
