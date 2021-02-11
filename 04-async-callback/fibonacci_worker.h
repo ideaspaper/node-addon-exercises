@@ -3,6 +3,17 @@
 
 #include <napi.h>
 
-Napi::Value Calculate(const Napi::CallbackInfo& info);
+using namespace Napi;
+
+class FibonacciWorker : public AsyncWorker {
+private:
+    int n;
+    int result;
+public:
+    FibonacciWorker(int n, Function &callback);
+    ~FibonacciWorker();
+    void Execute();
+    void OnOK();
+};
 
 #endif

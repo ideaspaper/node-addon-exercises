@@ -1,6 +1,6 @@
-const FibonacciAsync = require('bindings')('fibonacci_async');
+const FibonacciCallback = require('bindings')('fibonacci_callback');
 
-FibonacciAsync.Calculate(40, (err, data) => {
+FibonacciCallback.Calculate(45, (err, data) => {
   if (err) {
     console.log(err);
   } else {

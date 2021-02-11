@@ -1,10 +1,11 @@
 {
   "targets": [
     {
-      "target_name": "fibonacci_async",
+      "target_name": "fibonacci_callback",
       "sources": [
-        "fibonacci_async.cc",
-        "fibonacci_worker.cc"
+        "fibonacci_helper.cc",
+        "fibonacci_worker.cc",
+        "fibonacci_callback.cc"
       ],
       'cflags!': [ '-fno-exceptions' ],
       'cflags_cc!': [ '-fno-exceptions' ],
