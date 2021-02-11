@@ -31,7 +31,7 @@ Value Callback(const CallbackInfo& info) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
-    callback.Call(env.Global(), {Napi::String::New(env, "String from Addon - Hello World!")});
+    callback.Call(env.Global(), {String::New(env, "String from Addon - Hello World!")});
     return env.Null();
 }
 
