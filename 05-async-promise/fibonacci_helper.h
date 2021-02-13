@@ -1,5 +1,5 @@
-#ifndef HELPER_H_
-#define HELPER_H_
+#ifndef FIBONACCI_HELPER_H_
+#define FIBONACCI_HELPER_H_
 
 #include <napi.h>
 
