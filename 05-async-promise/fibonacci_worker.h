@@ -10,7 +10,7 @@ private:
     int result;
 public:
     // 2. Create constructor
-    FibonacciWorker(int n, Napi::Env&);
+    FibonacciWorker(int, Napi::Env&);
     // 3. Create destructor
     ~FibonacciWorker();
     // 4. Override Execute

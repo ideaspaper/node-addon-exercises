@@ -10,7 +10,7 @@ private:
     int result;
 public:
     // 2. Create constructor and do initialization list as well (see fibonacci_worker.cc file)
-    FibonacciWorker(int n, Napi::Function&);
+    FibonacciWorker(int, Napi::Function&);
     // 3. Create destructor
     ~FibonacciWorker();
     // 4. Override Execute method of Napi::AsyncWorker

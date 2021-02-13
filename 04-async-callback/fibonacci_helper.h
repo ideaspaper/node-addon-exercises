@@ -3,7 +3,7 @@
 
 #include <napi.h>
 
-int FibonacciRecursiveLogic(int n);
+int FibonacciRecursiveLogic(int);
 bool ArgumentsValidator(const Napi::CallbackInfo&);
 
 #endif
