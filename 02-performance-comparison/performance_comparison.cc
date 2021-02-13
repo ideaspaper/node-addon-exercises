@@ -1,6 +1,6 @@
 #include <napi.h>
 
-bool ArgumentsValidator(const Napi::CallbackInfo& info) {
+bool ArgumentsValidator(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
     if (info.Length() != 1) {
         Napi::TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
@@ -18,7 +18,7 @@ int FibonacciRecursiveLogic(int n) {
     return FibonacciRecursiveLogic(n - 1) + FibonacciRecursiveLogic(n - 2);
 }
 
-Napi::Value FibonacciRecursive(const Napi::CallbackInfo& info) {
+Napi::Value FibonacciRecursive(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
     if (!ArgumentsValidator(info)) return env.Null();
 

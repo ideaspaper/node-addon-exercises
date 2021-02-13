@@ -1,6 +1,6 @@
 #include <napi.h>
 
-bool ArgumentsValidator(const Napi::CallbackInfo& info) {
+bool ArgumentsValidator(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
     if (info.Length() != 2) {
         Napi::TypeError::New(env, "Wrong argument(s)").ThrowAsJavaScriptException();
@@ -13,7 +13,7 @@ bool ArgumentsValidator(const Napi::CallbackInfo& info) {
     return true;
 }
 
-Napi::Value Add(const Napi::CallbackInfo& info) {
+Napi::Value Add(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
     if (!ArgumentsValidator(info)) return env.Null();
 
@@ -22,7 +22,7 @@ Napi::Value Add(const Napi::CallbackInfo& info) {
     return Napi::Number::New(env, val1 + val2);
 }
 
-Napi::Value Sub(const Napi::CallbackInfo& info) {
+Napi::Value Sub(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
     if (!ArgumentsValidator(info)) return env.Null();
 
@@ -31,7 +31,7 @@ Napi::Value Sub(const Napi::CallbackInfo& info) {
     return Napi::Number::New(env, val1 - val2);
 }
 
-Napi::Value Mul(const Napi::CallbackInfo& info) {
+Napi::Value Mul(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
     if (!ArgumentsValidator(info)) return env.Null();
 
@@ -40,7 +40,7 @@ Napi::Value Mul(const Napi::CallbackInfo& info) {
     return Napi::Number::New(env, val1 * val2);
 }
 
-Napi::Value Div(const Napi::CallbackInfo& info) {
+Napi::Value Div(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
     if (!ArgumentsValidator(info)) return env.Null();
 

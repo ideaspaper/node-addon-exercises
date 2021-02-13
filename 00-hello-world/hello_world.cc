@@ -1,11 +1,11 @@
 #include <napi.h>
 
-Napi::String Hello(const Napi::CallbackInfo& info) {
+Napi::String Hello(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
     return Napi::String::New(env, "Hello");
 }
 
-Napi::String World(const Napi::CallbackInfo& info) {
+Napi::String World(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
     return Napi::String::New(env, "World");
 }

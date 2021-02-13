@@ -2,7 +2,7 @@
 #include "fibonacci_worker.h"
 #include "fibonacci_helper.h"
 
-Napi::Value Calculate(const Napi::CallbackInfo& info) {
+Napi::Value Calculate(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
     if (!ArgumentsValidator(info)) return env.Null();
 

@@ -8,7 +8,7 @@ private:
     int n;
     int result;
 public:
-    FibonacciWorker(int n, Napi::Env &env);
+    FibonacciWorker(int n, Napi::Env&);
     ~FibonacciWorker();
     void Execute();
     void OnOK();
