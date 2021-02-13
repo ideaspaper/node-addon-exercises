@@ -1,4 +1,4 @@
-const performance_comparison = require('bindings')('performance_comparison');
+const performance_comparison = require('./build/Release/obj.target/performance_comparison');
 
 function fibonacciRecursive(n) {
   if (n < 2) return n;

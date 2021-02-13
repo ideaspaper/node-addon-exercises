@@ -1,4 +1,4 @@
-const parameters_and_arguments = require('bindings')('parameters_and_arguments');
+const parameters_and_arguments = require('./build/Release/obj.target/parameters_and_arguments');
 
 console.log(parameters_and_arguments)
 console.log(parameters_and_arguments.Add(5, 10));

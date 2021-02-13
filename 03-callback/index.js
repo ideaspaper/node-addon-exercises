@@ -1,4 +1,4 @@
-const callback = require('bindings')('callback');
+const callback = require('./build/Release/obj.target/callback');
 
 try {
   callback.Callback(3, (data) => {

@@ -1,4 +1,4 @@
-const fibonacci_promise = require('bindings')('fibonacci_promise');
+const fibonacci_promise = require('./build/Release/obj.target/fibonacci_promise');
 
 fibonacci_promise.Calculate(45)
   .then((data) => {
