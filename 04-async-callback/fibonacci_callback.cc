@@ -8,7 +8,7 @@ Napi::Value Calculate(const Napi::CallbackInfo &info) {
 
     int n = info[0].As<Napi::Number>().Int32Value();
     Napi::Function callback = info[1].As<Napi::Function>();
-    FibonacciWorker* fibonacciWorker = new FibonacciWorker(n, callback);
+    FibonacciWorker *fibonacciWorker = new FibonacciWorker(n, callback);
     fibonacciWorker->Queue();
     return env.Null();
 }
