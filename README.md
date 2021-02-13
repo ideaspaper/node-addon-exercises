@@ -17,7 +17,7 @@ Regular Fibonacci execution time (hr): 20s 98.934679ms
 Addon Fibonacci execution time (hr): 8s 480.944312ms
 ```
 
-Waktu tersebut tentu berbeda apabila percobaan dilakukan pada komputer lain dengan spesifikasi yang berbeda. Namun dapat dilihat bahwa eksekusi function regular Fibonacci pada JavaScript membutuhkan waktu 2 kali lebih lama dari implementasi Node Addon (C++).
+Waktu tersebut hanya sebagai gambaran perbedaan performa dari compiled language dengan interpreted language saja. Dapat disimpulkan bahwa eksekusi function regular Fibonacci pada JavaScript membutuhkan waktu 2 kali lebih lama dari implementasi Node Addon (C++).
 
 ## How to Use
 
